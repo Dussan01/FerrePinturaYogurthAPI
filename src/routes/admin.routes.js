@@ -3,6 +3,14 @@ const router = Router()
 import { authJwt, verifySignup } from '../middlewares'
 import * as adminCtrl from "../controllers/admin.controller";
 
+//CREAR MARCAS
+router.post('/createBrand')
+
+
+
+
+
+
 // 1#  crear las materias
 // 2#  crear las materias
 

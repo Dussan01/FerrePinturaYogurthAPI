@@ -33,14 +33,7 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    },
-    jornada: {
-        type: String
-    },
-    grado: [{
-        ref: "Grado",
-        type: Schema.Types.ObjectId
-    }],
+    },    
     roles: [{
         ref: "Role",
         type: Schema.Types.ObjectId

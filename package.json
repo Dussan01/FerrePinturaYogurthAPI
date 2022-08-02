@@ -1,7 +1,7 @@
 {
-    "name": "colproyect-api",
+    "name": "Ferreteria",
     "version": "1.0.0",
-    "description": "Desarrollo API Colegio",
+    "description": "Desarrollo API Ferreteria",
     "main": "index.js",
     "scripts": {
         "build": "babel src --out-dir build",

@@ -1,3 +1,3 @@
 export default {
-    SECRET: 'colegio-api-dev'
+    SECRET: 'ferreteria-api-yogourth'
 }

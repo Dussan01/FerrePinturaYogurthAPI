@@ -5,7 +5,9 @@ import * as Verficacion from "../middlewares/verifySignup";
 
 
 
-router.post('/signup', Verficacion.checkDuplicateIdentificationAndEmail, authCtrl.signup)
+// router.post('/signup', Verficacion.checkDuplicateIdentificationAndEmail, authCtrl.signup)
+router.post('/signup', authCtrl.signup)
+
 router.post('/signin', authCtrl.signin)
 
 export default router;

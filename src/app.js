@@ -6,11 +6,11 @@ import { createRoles } from "./libs/inialSetup";
 
 import authRoutes from "./routes/auth.routes";
 import adminRoutes from "./routes/admin.routes";
-import docenteRoutes from "./routes/docente.routes";
-import actividadRoutes from "./routes/actividad.routes";
-import notaRoutes from "./routes/nota.routes";
-import estudianteRoutes from "./routes/estudiantes.routes";
-import userRoutes from "./routes/user.routes";
+// import docenteRoutes from "./routes/docente.routes";
+// import actividadRoutes from "./routes/actividad.routes";
+// import notaRoutes from "./routes/nota.routes";
+// import estudianteRoutes from "./routes/estudiantes.routes";
+// import userRoutes from "./routes/user.routes";
 
 
 require('dotenv').config()
@@ -48,11 +48,11 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
-app.use('/api/docente', docenteRoutes);
-app.use('/api/actividad', actividadRoutes);
-app.use('/api/nota', notaRoutes);
-app.use('/api/estudiante', estudianteRoutes);
-app.use('/api/user', userRoutes);
+// app.use('/api/docente', docenteRoutes);
+// app.use('/api/actividad', actividadRoutes);
+// app.use('/api/nota', notaRoutes);
+// app.use('/api/estudiante', estudianteRoutes);
+// app.use('/api/user', userRoutes);
 
 
 export default app;
