@@ -1,11 +1,20 @@
-
-
-
 import User from "../models/User";
 import Role from '../models/Role';
 import Grado from '../models/Grado';
 import Materia from "../models/Materia";
 import {mongo} from 'mongoose';
+import Distribuidor from "../models/Distribuidor";
+
+
+//Create Distributor
+export const createDistributor = async (req, res) => {
+    const {empresa, cuenta, responsable, banco, telefono, celular, celularopc, correo, nit} = req.body
+    const newDistributor = new Distribuidor({empresa, cuenta, responsable, banco, telefono, celular, celularopc, correo, nit})
+    const rest = await newDistributor.save()
+    res.status(200).json({"message":"Guardado con exito", "data": rest})
+    // const {} = req.body
+    // console.log(req.body);
+}
 
 // // CRUD PARA USUARIOS
 
