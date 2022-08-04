@@ -2,9 +2,18 @@ import { Router } from "express";
 const router = Router()
 import { authJwt, verifySignup } from '../middlewares'
 import * as adminCtrl from "../controllers/admin.controller";
+import {validate} from "../validations/singup.validations"
+
+
 
 //CREAR DISTRIBUIRDOR
-router.post('/createBrand', adminCtrl.createDistributor);
+router.get('/getBrand', adminCtrl.getDistributor)
+router.get('/getBrandByid/:distributorid', adminCtrl.getByIdDistributor)
+router.post('/createBrand', adminCtrl.createDistributor)
+router.put('/updateBrandId/:distributorid', adminCtrl.updateBrandById)
+router.delete('/deleteBrandById/:distributorid', adminCtrl.deleteBrandById)
+
+
 
 
 

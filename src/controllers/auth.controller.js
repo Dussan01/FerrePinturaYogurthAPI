@@ -1,5 +1,5 @@
 import Role from "../models/Role";
-import Grado from "../models/Grado";
+// import Grado from "../models/Grado";
 import User from "../models/User";
 import jwt from "jsonwebtoken";
 import config from "../config";

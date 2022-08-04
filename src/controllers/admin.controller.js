@@ -1,20 +1,42 @@
 import User from "../models/User";
 import Role from '../models/Role';
-import Grado from '../models/Grado';
-import Materia from "../models/Materia";
 import {mongo} from 'mongoose';
 import Distribuidor from "../models/Distribuidor";
 
 
 //Create Distributor
+export const getDistributor = async (req, res) => {
+    const distributor = await Distribuidor.find()
+    res.json({"data": distributor});
+}
+
+export const getByIdDistributor = async (req, res) => {
+    const distributorid = await Distribuidor.findById(req.params.distributorid)
+    res.json({"data": distributorid});
+}
+
+
+
+
 export const createDistributor = async (req, res) => {
     const {empresa, cuenta, responsable, banco, telefono, celular, celularopc, correo, nit} = req.body
     const newDistributor = new Distribuidor({empresa, cuenta, responsable, banco, telefono, celular, celularopc, correo, nit})
     const rest = await newDistributor.save()
     res.status(200).json({"message":"Guardado con exito", "data": rest})
-    // const {} = req.body
-    // console.log(req.body);
 }
+
+
+export const updateBrandById = async (req, res) => {
+    const {empresa, cuenta, responsable, banco, telefono, celular, celularopc, correo, nit} = req.body     
+    const updateByIdDistributor = await Distribuidor.findByIdAndUpdate(req.params.distributorid,{empresa, cuenta, responsable, banco, telefono, celular, celularopc, correo, nit}, { new: true })   
+    res.json({"message":"Actualizado con exito","data": updateByIdDistributor});
+}
+
+export const deleteBrandById = async (req,res) => {
+    const deleteDistributor = await Distribuidor.findByIdAndDelete(req.params.distributorid)
+    res.status(200).json({"message":"Eliminado correctamente"});
+}
+
 
 // // CRUD PARA USUARIOS
 
