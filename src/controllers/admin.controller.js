@@ -2,9 +2,13 @@ import User from "../models/User";
 import Role from '../models/Role';
 import {mongo} from 'mongoose';
 import Distribuidor from "../models/Distribuidor";
+import Calidad from "../models/Calidad";
+import Categoria from "../models/Categoria";
+import Unidad from "../models/Unidad";
 
 
-//Create Distributor
+
+//CRUD DISTRIBUTOR
 export const getDistributor = async (req, res) => {
     const distributor = await Distribuidor.find()
     res.json({"data": distributor});
@@ -15,16 +19,12 @@ export const getByIdDistributor = async (req, res) => {
     res.json({"data": distributorid});
 }
 
-
-
-
 export const createDistributor = async (req, res) => {
     const {empresa, cuenta, responsable, banco, telefono, celular, celularopc, correo, nit} = req.body
     const newDistributor = new Distribuidor({empresa, cuenta, responsable, banco, telefono, celular, celularopc, correo, nit})
     const rest = await newDistributor.save()
     res.status(200).json({"message":"Guardado con exito", "data": rest})
 }
-
 
 export const updateBrandById = async (req, res) => {
     const {empresa, cuenta, responsable, banco, telefono, celular, celularopc, correo, nit} = req.body     
@@ -36,6 +36,93 @@ export const deleteBrandById = async (req,res) => {
     const deleteDistributor = await Distribuidor.findByIdAndDelete(req.params.distributorid)
     res.status(200).json({"message":"Eliminado correctamente"});
 }
+//CRUD Quality
+export const getQuality = async (req, res) => {
+    const getQuality = await Calidad.find()
+    res.status(200).json({"data": getQuality})
+}
+
+export const getQualityById = async (req, res) => {
+    const getQuality = await Calidad.findById(req.params.idcalidad)
+    res.status(200).json({"data": getQuality})
+}
+
+export const createQuality = async (req, res) => {
+    const {calidad} = req.body
+    const newCalidad = new Calidad({calidad})
+    const result = await newCalidad.save()
+    res.status(200).json({"message": "Guardado con exito", "data": result})
+}
+
+export const updateQuality = async (req, res) => {
+    const {calidad} = req.body
+    const updateQuality = await Calidad.findByIdAndUpdate(req.params.idcalidad,{calidad}, { new: true })    
+    res.status(200).json({"message":"Actualizado con exito"})
+}
+export const deleteQuality = async (req, res) => {    
+    const deleteQuality = await Calidad.findByIdAndDelete(req.params.idcalidad)
+    res.status(200).json({"message":"Eliminado con exito"})
+}
+
+//CRUD CATEGORY
+export const getCategory = async (req, res) => {
+    const getCategory = await Categoria.find()
+    res.status(200).json({"data": getCategory})
+}
+
+export const getCategoryById = async (req, res) => {
+    const getCategory = await Categoria.findById(req.params.idCategory)
+    res.status(200).json({"data": getCategory})
+}
+
+export const createCategory = async (req, res) => {
+    const {categoria} = req.body
+    const newCategoria = new Categoria({categoria})
+    const result = await newCategoria.save()
+    res.status(200).json({"message": "Guardado con exito", "data": result})
+}
+
+export const updateCategory = async (req, res) => {
+    const {categoria} = req.body
+    const updateCategory = await Categoria.findByIdAndUpdate(req.params.idCategory,{categoria}, { new: true })    
+    res.status(200).json({"message":"Actualizado con exito"})
+}
+export const deleteCategory = async (req, res) => {    
+    const deleteCategory = await Categoria.findByIdAndDelete(req.params.idCategory)
+    res.status(200).json({"message":"Eliminado con exito"})
+}
+
+
+//CRUD Unit
+export const getUnit = async (req, res) => {
+    const getUnit = await Unidad.find()
+    res.status(200).json({"data": getUnit})
+}
+
+export const getUnitById = async (req, res) => {
+    const getUnit = await Unidad.findById(req.params.idUnit)
+    res.status(200).json({"data": getUnit})
+}
+
+export const createUnit = async (req, res) => {
+    const {unidad, descripcion} = req.body
+    const newUnidad = new Unidad({unidad, descripcion})
+    const result = await newUnidad.save()
+    res.status(200).json({"message": "Guardado con exito", "data": result})
+}
+
+export const updateUnit = async (req, res) => {
+    const {unidad, descripcion} = req.body
+    const updateUnit = await Unidad.findByIdAndUpdate(req.params.idUnit,{unidad, descripcion}, { new: true })    
+    res.status(200).json({"message":"Actualizado con exito"})
+}
+export const deleteUnit = async (req, res) => {    
+    const deleteUnit = await Unidad.findByIdAndDelete(req.params.idUnit)
+    res.status(200).json({"message":"Eliminado con exito"})
+}
+
+
+
 
 
 // // CRUD PARA USUARIOS

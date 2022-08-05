@@ -2,14 +2,26 @@ import { Schema, model } from "mongoose";
 
 
 
-const marcaSchema = new Schema({
-    Marca: [{
-        ref: "Marca",
-        type: Schema.Types.ObjectId
-    }],
-    Categoria: [{
+const stockSchema = new Schema({
+    
+   
+    categoria: [{
         ref: "Categoria",
         type: Schema.Types.ObjectId
+    }],
+    calidad: [{
+        ref: "Calidad",
+        type: Schema.Types.ObjectId
+    }],
+    cantidad:{
+        type: String
+    },
+    cantidadStock: {
+        type: String 
+    },
+    distribuidor: [{
+        ref: "Distribuidor",
+        type: Schema.Types.marca
     }],
     codigo_producto: {
         type: String
@@ -37,4 +49,4 @@ const marcaSchema = new Schema({
 
 
 
-export default model('Marca', marcaSchema);
+export default model('Stock', stockSchema);

@@ -29,7 +29,10 @@ const distribuidorSchema = new Schema({
     },
     nit: {
         type: String
-    },    
+    },
+    marca: {
+        type: String
+    }    
 }, {
     timestamps: true,
     versionKey: false,

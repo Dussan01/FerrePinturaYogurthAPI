@@ -6,12 +6,46 @@ import {validate} from "../validations/singup.validations"
 
 
 
-//CREAR DISTRIBUIRDOR
+//CRUD DISTRIBUIRDOR
 router.get('/getBrand', adminCtrl.getDistributor)
 router.get('/getBrandByid/:distributorid', adminCtrl.getByIdDistributor)
 router.post('/createBrand', adminCtrl.createDistributor)
 router.put('/updateBrandId/:distributorid', adminCtrl.updateBrandById)
 router.delete('/deleteBrandById/:distributorid', adminCtrl.deleteBrandById)
+
+//CRUD CALIDAD 
+router.get('/getQuality', adminCtrl.getQuality)
+router.get('/getQualityByid/:idcalidad', adminCtrl.getQualityById)
+router.post('/createQuality', adminCtrl.createQuality)
+router.put('/updateQualityId/:idcalidad', adminCtrl.updateQuality)
+router.delete('/deleteQualityById/:idcalidad', adminCtrl.deleteQuality)
+
+
+//CRUD Category 
+router.get('/getCategory', adminCtrl.getCategory)
+router.get('/getCategoryByid/:idCategory', adminCtrl.getCategoryById)
+router.post('/createCategory', adminCtrl.createCategory)
+router.put('/updateCategoryId/:idCategory', adminCtrl.updateCategory)
+router.delete('/deleteCategoryById/:idCategory', adminCtrl.deleteCategory)
+
+//CRUD Unit
+router.get('/getUnit', adminCtrl.getUnit)
+router.get('/getUnitByid/:idUnit', adminCtrl.getUnitById)
+router.post('/createUnit', adminCtrl.createUnit)
+router.put('/updateUnitId/:idUnit', adminCtrl.updateUnit)
+router.delete('/deleteUnitById/:idUnit', adminCtrl.deleteUnit)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
