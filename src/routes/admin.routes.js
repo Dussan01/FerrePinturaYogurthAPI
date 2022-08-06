@@ -7,12 +7,12 @@ import {validate} from "../validations/singup.validations"
 
 
 //CRUD DISTRIBUIRDOR
-router.get('/getBrand', adminCtrl.getDistributor)
-router.get('/getBrandByid/:distributorid', adminCtrl.getByIdDistributor)
-router.post('/createBrand', adminCtrl.createDistributor)
-router.put('/updateBrandId/:distributorid', adminCtrl.updateBrandById)
-router.delete('/deleteBrandById/:distributorid', adminCtrl.deleteBrandById)
-
+router.get('/getDistributor', adminCtrl.getDistributor)
+router.get('/getDistributorByid/:distributorid', adminCtrl.getByIdDistributor)
+router.post('/createDistributor', adminCtrl.createDistributor)
+router.put('/updateDistributorId/:distributorid', adminCtrl.updateDistributorById)
+router.delete('/deleteDistributorById/:distributorid', adminCtrl.deleteDistributorById)
+ 
 //CRUD CALIDAD 
 router.get('/getQuality', adminCtrl.getQuality)
 router.get('/getQualityByid/:idcalidad', adminCtrl.getQualityById)
@@ -35,12 +35,12 @@ router.post('/createUnit', adminCtrl.createUnit)
 router.put('/updateUnitId/:idUnit', adminCtrl.updateUnit)
 router.delete('/deleteUnitById/:idUnit', adminCtrl.deleteUnit)
 
-
-
-
-
-
-
+//CRUD Product    
+router.get('/getProduct', adminCtrl.getProduct)
+router.get('/getProductByid/:idProduct', adminCtrl.getProductById)
+router.post('/createProduct', adminCtrl.createProduct)
+// router.put('/updateProductId/:idProduct', adminCtrl.updateProduct)
+// router.delete('/deleteProductById/:idProduct', adminCtrl.)
 
 
 

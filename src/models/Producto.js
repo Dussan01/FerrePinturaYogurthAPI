@@ -2,9 +2,7 @@ import { Schema, model } from "mongoose";
 
 
 
-const stockSchema = new Schema({
-    
-   
+const productSchema = new Schema({
     categoria: [{
         ref: "Categoria",
         type: Schema.Types.ObjectId
@@ -16,33 +14,26 @@ const stockSchema = new Schema({
     calidad: [{
         ref: "Calidad",
         type: Schema.Types.ObjectId
-    }],
-    marca: [{
-        ref: "Marca",
-        type: Schema.Types.ObjectId
     }],    
     distribuidor: [{
         ref: "Distribuidor",
-        type: Schema.Types.marca
-    }],
-    codigo_producto: {
-        type: String
-    },
-    nombre: {
-        type: String
-    },
-    descripcion:{
-        type: String
-    },
-    cantidad:{
+        type: Schema.Types.ObjectId
+    }],    
+    precio_lista: {
         type: Number
     },
-    precio_unidad:{
+    descuento_ingreso:{
         type: Number
-    }
-    
-     
-        
+    },
+    porcentaje: {
+        type: Number
+    },
+    valor_unitario:{
+        type: Number
+    },
+    color:{
+        type: String
+    }    
 }, {
     timestamps: true,
     versionKey: false,
@@ -51,4 +42,4 @@ const stockSchema = new Schema({
 
 
 
-export default model('Stock', stockSchema);
+export default model('Product', productSchema);

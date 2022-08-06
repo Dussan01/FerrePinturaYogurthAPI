@@ -5,6 +5,8 @@ import Distribuidor from "../models/Distribuidor";
 import Calidad from "../models/Calidad";
 import Categoria from "../models/Categoria";
 import Unidad from "../models/Unidad";
+import Producto from "../models/Producto";
+import { json } from "express";
 
 
 
@@ -20,19 +22,19 @@ export const getByIdDistributor = async (req, res) => {
 }
 
 export const createDistributor = async (req, res) => {
-    const {empresa, cuenta, responsable, banco, telefono, celular, celularopc, correo, nit} = req.body
-    const newDistributor = new Distribuidor({empresa, cuenta, responsable, banco, telefono, celular, celularopc, correo, nit})
+    const {empresa, cuenta, marca, responsable, banco, telefono, celular, celularopc, correo, nit} = req.body
+    const newDistributor = new Distribuidor({empresa, cuenta, marca, responsable, banco, telefono, celular, celularopc, correo, nit})
     const rest = await newDistributor.save()
     res.status(200).json({"message":"Guardado con exito", "data": rest})
 }
 
-export const updateBrandById = async (req, res) => {
-    const {empresa, cuenta, responsable, banco, telefono, celular, celularopc, correo, nit} = req.body     
-    const updateByIdDistributor = await Distribuidor.findByIdAndUpdate(req.params.distributorid,{empresa, cuenta, responsable, banco, telefono, celular, celularopc, correo, nit}, { new: true })   
+export const updateDistributorById = async (req, res) => {
+    const {empresa, cuenta, marca, responsable, banco, telefono, celular, celularopc, correo, nit} = req.body     
+    const updateByIdDistributor = await Distribuidor.findByIdAndUpdate(req.params.distributorid,{empresa, cuenta, responsable, marca, banco, telefono, celular, celularopc, correo, nit}, { new: true })   
     res.json({"message":"Actualizado con exito","data": updateByIdDistributor});
 }
 
-export const deleteBrandById = async (req,res) => {
+export const deleteDistributorById = async (req,res) => {
     const deleteDistributor = await Distribuidor.findByIdAndDelete(req.params.distributorid)
     res.status(200).json({"message":"Eliminado correctamente"});
 }
@@ -121,8 +123,41 @@ export const deleteUnit = async (req, res) => {
     res.status(200).json({"message":"Eliminado con exito"})
 }
 
+//CREATE PRODUCTO
+
+export const getProduct = async(req,res) => {
+    const getProduct = await Producto.find()
+    res.status(200).json({"data":getProduct})
+}
+
+export const getProductById = async (req, res) => {
+    const getProductById = await Producto.findById(req.params.idProduct)
+    res.status(200).json({"data": getProductById})
+}
 
 
+export const createProduct = async (req, res) => {
+    const {categoria, unidad, calidad, distribuidor, precio_lista, descuento_ingreso, porcentaje, valor_unitario, color} = req.body
+    const newProduct = new Producto({categoria, unidad, calidad,  distribuidor, precio_lista, descuento_ingreso, porcentaje, valor_unitario, color})
+    const foundCategory = await Categoria.find({categoria: {$in: categoria}})    
+    newProduct.categoria = foundCategory.map(catergoria => catergoria._id)
+    const foundUnit = await Unidad.find({unidad: {$in: unidad}})
+    newProduct.unidad = foundUnit.map(unidad => unidad._id)
+    const foundQuality = await Calidad.find({calidad: {$in: calidad}})
+    newProduct.calidad = foundQuality.map(calidad => calidad._id)
+    const foundDistributor = await Distribuidor.find({marca: {$in: distribuidor}})
+    newProduct.distribuidor = foundDistributor.map(marca => marca._id)
+    const result = await newProduct.save()
+    res.status(200).json({"message":"Guardado con exito", "data": result})
+}
+
+export const updateProduct = async (req, res) =>{
+
+}
+
+export const deleteProduct = async (req, res) => {
+    
+}
 
 
 // // CRUD PARA USUARIOS
