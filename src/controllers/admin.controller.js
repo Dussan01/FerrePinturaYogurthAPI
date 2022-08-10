@@ -152,6 +152,16 @@ export const createProduct = async (req, res) => {
 }
 
 export const updateProduct = async (req, res) =>{
+    const {categoria, unidad, calidad, distribuidor, precio_lista, descuento_ingreso, porcentaje, valor_unitario, color} = req.body
+    const newProduct = new Producto({categoria, unidad, calidad, distribuidor, precio_lista, descuento_ingreso, porcentaje, valor_unitario, color})
+    console.log(req.body)
+
+    const foundCategory = await Categoria.find({ categoria: categoria })
+    console.log(foundCategory)
+    const fcategoria = foundCategory.map(categoria => categoria._id)
+    
+    console.log(fcategoria)
+    // const foundCategory = await Categoria.find({categoria: {$in: categoria}})    
 
 }
 
