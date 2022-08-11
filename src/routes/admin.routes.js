@@ -40,7 +40,7 @@ router.get('/getProduct', adminCtrl.getProduct)
 router.get('/getProductByid/:idProduct', adminCtrl.getProductById)
 router.post('/createProduct', adminCtrl.createProduct)
 router.put('/updateProductId/:idProduct', adminCtrl.updateProduct)
-// router.delete('/deleteProductById/:idProduct', adminCtrl.)
+router.delete('/deleteProductById/:idProduct', adminCtrl.deleteProduct)
 
 
 

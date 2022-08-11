@@ -36,10 +36,13 @@ import mongoose from "mongoose";
     // } catch (error) {
     //     console.log(error)    
     // }
+
+ 
+
     try {
     
         mongoose.connect(
-            `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.ymr7x.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`,{
+            `mongodb+srv://${process.env.USERDB}:${process.env.PASSWORD}@cluster0.ymr7x.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`,{
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: true,

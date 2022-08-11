@@ -157,15 +157,28 @@ export const updateProduct = async (req, res) =>{
     console.log(req.body)
 
     const foundCategory = await Categoria.find({ categoria: categoria })
-    console.log(foundCategory)
     const fcategoria = foundCategory.map(categoria => categoria._id)
-    
-    console.log(fcategoria)
-    // const foundCategory = await Categoria.find({categoria: {$in: categoria}})    
+    const foundUnit = await Unidad.find({unidad: {$in: unidad}})
+    const funit = foundUnit.map(unidad => unidad._id)
+    const foundQuality = await Calidad.find({calidad: {$in: calidad}})
+    const fquality = foundQuality.map(calidad => calidad._id)
+    const foundDistributor = await Distribuidor.find({marca: {$in: distribuidor}})
+    const fdistributor = foundDistributor.map(marca => marca._id)
 
+    const updateResult = await Producto.findByIdAndUpdate(req.params.idProduct, {
+        categoria: fcategoria, 
+        unidad: funit,
+        calidad: fquality, 
+        distribuidor: fdistributor,
+        precio_lista, descuento_ingreso, porcentaje, valor_unitario, color},{new: true})
+        res.status(200).json({"message":"Actualizado con exito", "data": updateResult})
+
+    
 }
 
 export const deleteProduct = async (req, res) => {
+    const deleteProducto = await Producto.findByIdAndDelete(req.params.idProduct)
+    res.status(200).json({"message": "Eliminado con exito"})
     
 }
 
