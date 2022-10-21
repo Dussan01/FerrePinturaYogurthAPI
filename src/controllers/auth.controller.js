@@ -4,7 +4,7 @@ import User from "../models/User";
 import jwt from "jsonwebtoken";
 import config from "../config";
 
-
+//Prueba
 
 export const signup = async (req, res) => {
     
@@ -44,25 +44,26 @@ export const signup = async (req, res) => {
 
 }
 export const signin = async (req, res) => {
-    const userFound = await User.findOne({ email: req.body.email }).populate("roles")
-        const identificacionUser = await User.findOne({ identificacion: req.body.identificacion }).populate("roles")
-        if (req.body.email) {
-            if (!userFound) return res.status(400).json({ message: "Usuario no encontrado" });
-            const macthPassword = await User.comparePassword(req.body.password, userFound.password)
-            if (!macthPassword) return res.status(401).json({ token: null, message: "Contraseña invalida" });
-            const token = jwt.sign({ id: userFound._id }, config.SECRET, {
-                expiresIn: 86400
-            })
-            res.json({ token })
-        } else if (req.body.identificacion) {
-            if (!identificacionUser) return res.status(400).json({ message: "Usuario no encontrado" });
-            const macthPassword = await User.comparePassword(req.body.password, identificacionUser.password);
-            if (!macthPassword) return res.status(401).json({ token: null, message: "Contraseña invalida" });
-            const token = jwt.sign({ id: identificacionUser._id }, config.SECRET, {
-                expiresIn: 86400
-            })
-            res.json({ token })
-        }
+    
+    // const userFound = await User.findOne({ email: req.body.user }).populate("roles")
+    // const identificacionUser = await User.findOne({ identificacion: req.body.user }).populate("roles")
+    //     if (userFound != null) {
+    //         if (!userFound) return res.status(400).json({ message: "Usuario no encontrado" });
+    //         const macthPassword = await User.comparePassword(req.body.password, userFound.password)
+    //         if (!macthPassword) return res.status(401).json({ token: null, message: "Contraseña invalida" });
+    //         const token = jwt.sign({ id: userFound._id }, config.SECRET, {
+    //             expiresIn: 86400
+    //         })
+    //         res.json({ token })
+    //     } else if (identificacionUser != null) {
+    //         if (!identificacionUser) return res.status(400).json({ message: "Usuario no encontrado" });
+    //         const macthPassword = await User.comparePassword(req.body.password, identificacionUser.password);
+    //         if (!macthPassword) return res.status(401).json({ token: null, message: "Contraseña invalida" });
+    //         const token = jwt.sign({ id: identificacionUser._id }, config.SECRET, {
+    //             expiresIn: 86400
+    //         })
+    //         res.json({ token })
+    //     }
     try {
         
     } catch (error) {
