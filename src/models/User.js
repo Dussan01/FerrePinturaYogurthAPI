@@ -5,6 +5,10 @@ const userSchema = new Schema({
         type: Number,
         unique: true
     }, 
+    usuario:{
+        type: String,
+        unique: true        
+    },
     email:{
         type: String,
         unique: true
